@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body onload="showTime()">
+    <div id="header">
+      <div class="tryingDesign" style="margin-left: 15px">
+        <i
+          class="fa-solid fa-check-double"
+          style="font-size: 25px; background-color: black; color: white"
+          id="ico"
+        ></i>
+      </div>
+      <div class="tryingDesign">
+        <span style="color: white; background-color: black">
+          Şayet bir gün çaresiz kalırsanız, bir kurtarıcı beklemeyin. Kurtarıcı
+          kendiniz olun.
+        </span>
+        <span
+          style="
+            color: white;
+            background-color: black;
+            text-align: right;
+            font-size: 20px;
+          "
+          ><em>Mustafa Kemal ATATÜRK</em>
+        </span>
+      </div>
+      <div class="tryingDesign" style="margin-right: 15px">
+        <div id="digitalClock" class="clock"></div>
+      </div>
+    </div>
+    <div class="commons">
+      <div>
+        <div class="tasks">
+          <p
+            style="
+              font-size: 32px;
+              color: white;
+              font-family: 'Orbitron';
+              text-align: center;
+              margin-bottom: 60px;
+            "
+          >
+            Tasks
+          </p>
+        </div>
+        <div style="margin-bottom: 30px" class="form" id="tasks">
+          <textarea
+            name="form1"
+            id="words"
+            cols="30"
+            rows="5"
+            wrap="hard"
+            placeholder="Lütfen yapılacakları giriniz."
+            required
+          ></textarea>
+          <span id="words-validation" class="validation-text"
+            ><i>! Zorunlu Alan !</i></span
+          >
+          <h6 id="severity" style="font-size: 18px">Zorluk Seviyesi</h6>
+          <input type="radio" id="hard" name="difficulty" checked /><span
+            style="
+              color: white;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            "
+            >Zor</span
+          >
+          <input type="radio" id="middle" name="difficulty" /><span
+            style="
+              color: white;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            "
+            >Orta</span
+          >
+          <input type="radio" id="easy" name="difficulty" /><span
+            style="
+              color: white;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            "
+            >Kolay</span
+          >
+          <div style="margin-top: 25px">
+            <a href="#" onclick="addNewTodo()" class="tryingDesign"
+              ><span
+                style="
+                  font-family: 'Orbitron';
+                  border: 2px solid black;
+                  background: black;
+                  color: white;
+                "
+                >Save For Me</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 18px; font-family: 'Orbitron'" id="toDo">
+        <div id="select">
+          <p style="font-size: 32px; color: white">Todo</p>
+          <ul id="todos">
+            <li id="emptyArray">Henüz Görev Mevcut değil.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tryingDesign">
+            <button
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 25px;
+                text-align: center;
+                color: white;
+                background: black;
+              "
+              onclick="addToInProgress()"
+            >
+              Ekle
+            </button>
+          </div>
+          <div class="tryingDesign">
+            <button
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 25px;
+                text-align: center;
+                color: white;
+                background: black;
+              "
+              onclick="removeFromProgress()"
+            >
+              Çıkart
+            </button>
+          </div>
+        </div>
+        <div id="inProgress1">
+          <p style="font-size: 32px; color: white">In Progress</p>
+          <ul id="inProgress">
+            <li id="emptyArray1">Henüz aktif görev mevcut değil.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tryingDesign">
+            <button
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 25px;
+                text-align: center;
+                color: white;
+                background: black;
+              "
+              onclick="addToCompleted()"
+            >
+              Ekle
+            </button>
+          </div>
+          <div class="tryingDesign">
+            <button
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 25px;
+                text-align: center;
+                color: white;
+                background: black;
+              "
+              onclick="removeFromCompleted()"
+            >
+              Çıkart
+            </button>
+          </div>
+        </div>
+        <div id="completed" style="font-size: 18px">
+          <p style="font-size: 32px; color: white">Completed</p>
+          <ul id="completedList">
+            <li id="emptyArray2">Henüz tamamlanmış bir görev mevcut değil.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tryingDesign">
+        <button style="background: black" onclick="removeCompletedTasks()">
+          <i
+            style="
+              font-size: 35px;
+              color: white;
+              background-color: black;
+              background: black;
+            "
+            class="fa-solid fa-trash-can"
+          ></i>
+        </button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
